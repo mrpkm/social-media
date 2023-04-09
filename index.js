@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+// use express router 
+// import from router 
+app.use('/', require('./routes'))
+
 
 app.listen(port, function (err) {
     if (err) {
