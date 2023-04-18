@@ -8,6 +8,6 @@ const contactController = require('../controllers/cont_controller');
 // console.log("user controller is running")
 
 // get router map 
-router.get('/contact', contactController.contact);
+router.get('/user-contact', contactController.contact);
 
 module.exports = router;

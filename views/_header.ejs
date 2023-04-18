@@ -7,7 +7,40 @@
 <body>
 
     <header>
-        this is a header
+
+        <ul>
+            <% if(locals.user) {%>
+                <li>
+                    <a href="/user/profile">
+                        <%= user.name %>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/contact/user-contact">
+                        contact
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/user/sign-out">sign-out</a>
+                </li>
+
+                <% }else{ %>
+                    <li>
+                        <a href="/user/sign-in">sign-in</a>
+                    </li>
+                    <li>
+                        <a href="/user/sign-up">sign-up</a>
+                    </li>
+
+                    <% } %>
+        </ul>
     </header>
 </body>
 

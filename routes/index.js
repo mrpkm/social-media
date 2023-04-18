@@ -11,7 +11,7 @@ router.get('/', homeController.home);
 //user router
 router.use('/user', require('./user'));
 //contact router
-router.use('/', require('./cont'));
+router.use('/contact', require('./cont'));
 
 // for any future ruter access from here
 // router.use('/routerName', require('./routerfile'))
