@@ -13,6 +13,11 @@ router.use('/user', require('./user'));
 //contact router
 router.use('/contact', require('./cont'));
 
+//15 post - to require posts path on router
+router.use('/posts', require('./posts'))
+// 16 post - go to form and action change url path pm 
+
+
 // for any future ruter access from here
 // router.use('/routerName', require('./routerfile'))
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+mongoose.set('strictQuery', false)
 mongoose.connect('mongodb://localhost/codeal_development');
 
 const db = mongoose.connection;

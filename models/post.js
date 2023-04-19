@@ -1,10 +1,10 @@
-//1 Realationship in database
+//1 post - Realationship in database
 //used post for social media website
 
-//2 reuired mongooes
+//2  post - reuired mongooes
 const mongoose = require('mongoose');
 
-//3 create schema
+//3 post - create schema
 const postSchema = new mongoose.Schema({
     // it will taks object 
     content: {// for contant post
@@ -12,8 +12,16 @@ const postSchema = new mongoose.Schema({
         require: true
     },
     user: { // who post with name or id
-        type:
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
-
-
+}, {// time stans it will give time of activity
+    timestamps: true
 })
+
+//4 post - export the schema
+const Post = mongoose.model('Post', postSchema);
+//5 post - export post
+module.exports = Post;
+
+//6 post - go to the views and make a file and create a form of on it

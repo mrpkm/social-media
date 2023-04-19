@@ -1,8 +1,38 @@
 <h1>this is a home page</h1>
 
+
+<!-- 6 post - creating a form -->
 <section id="feed-post">
-    <form action="" id="new-post-form" method="POST">
-        <textarea name="content" cols="30" rows="3"></textarea> <br>
-        <input type="submit" value="Post">
-    </form>
+    <!-- 16 post - url crated router and controller '/posts/create' -->
+    <!-- 17 post -  then goes to homeController -->
+    <h1>feed</h1>
+    <!-- post 22 - condition     >>>>>>> post 23 ---router post -->
+    <% if(local.user){%>
+
+        <% } %>
+            <form action="/posts/create" id="new-post-form" method="POST">
+                <textarea name="content" cols="30" rows="3" placeholder="Type here..."></textarea> <br>
+                <input type="submit" value="Post">
+            </form>
+
+            <!--  7 post - create a post controller file -->
+
+            <!-- 20 post - create a container and for loop -->
+            <div id="post-list-container">
+                <ul>
+                    <% for(post of posts){ %>
+                        <li>
+                            <p>
+                                <%= post.content %>
+                                    <br>
+                                    <small>
+                                        <%= post.user.name %>
+                                    </small>
+                            </p>
+
+                        </li>
+
+                        <% } %>
+                </ul>
+            </div>
 </section>
