@@ -14,7 +14,14 @@ const postSchema = new mongoose.Schema({
     user: { // who post with name or id
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }], likes: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Like'
+    }]
 }, {// time stans it will give time of activity
     timestamps: true
 })

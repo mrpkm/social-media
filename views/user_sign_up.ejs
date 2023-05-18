@@ -2,10 +2,14 @@
     <%= title %>
 </h1>
 
-<form action="/user/create" method="post">
+<form action="/users/create" method="post">
     <input type="text" name="name" placeholder="name" required><br>
     <input type="email" name="email" placeholder="email" required><br>
     <input type="password" name="password" placeholder="password" required><br>
     <input type="password" name="conform_password" placeholder="conform password" required><br>
     <input type="submit" value="sing up">
 </form>
+
+<p>
+    <a href="/users/auth/google"> gogole signIn & signUp</a>
+</p>

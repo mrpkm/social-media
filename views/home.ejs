@@ -1,38 +1,53 @@
-<h1>this is a home page</h1>
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
 
+<div class="home-container">
 
-<!-- 6 post - creating a form -->
-<section id="feed-post">
-    <!-- 16 post - url crated router and controller '/posts/create' -->
-    <!-- 17 post -  then goes to homeController -->
-    <h1>feed</h1>
-    <!-- post 22 - condition     >>>>>>> post 23 ---router post -->
-    <% if(local.user){%>
+    <!-- 6 post - creating a form -->
+    <section id="feed-post">
+        <!-- 16 post - url crated router and controller '/posts/create' -->
+        <!-- 17 post -  then goes to homeController -->
+        <h1>feed</h1>
+        <!-- post 22 - condition     >>>>>>> post 23 ---router post -->
 
-        <% } %>
-            <form action="/posts/create" id="new-post-form" method="POST">
-                <textarea name="content" cols="30" rows="3" placeholder="Type here..."></textarea> <br>
-                <input type="submit" value="Post">
-            </form>
+        <form action="/posts/create" id="new-post-form" method="POST">
+            <textarea name="content" cols="30" rows="3" placeholder="Type here..."></textarea> <br>
+            <input type="submit" value="Post">
+        </form>
 
-            <!--  7 post - create a post controller file -->
+        <!--  7 post - create a post controller file -->
 
-            <!-- 20 post - create a container and for loop -->
-            <div id="post-list-container">
-                <ul>
-                    <% for(post of posts){ %>
-                        <li>
-                            <p>
-                                <%= post.content %>
-                                    <br>
-                                    <small>
-                                        <%= post.user.name %>
-                                    </small>
-                            </p>
-
-                        </li>
+        <!-- 20 post - create a container and for loop -->
+        <div id="post-list-container">
+            <ul>
+                <% for(post of posts){ %>
+                    <%-include('_post')-%>
 
                         <% } %>
-                </ul>
-            </div>
-</section>
+            </ul>
+        </div>
+    </section>
+    <section id="user-friend">
+        <h3>friend</h3>
+        <% for (u of all_user){ %>
+            <p>
+                <a href="/users/profile/<%=u.id %>">
+                    <%=u.name %>
+                </a>
+            </p>
+
+            <%} %>
+
+                <%- include('_chat_box') -%>
+
+    </section>
+</div>
+
+<script src="/js/home_post.js"></script>
+<script src="/js/chat_engine.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+<% if (locals.user){ %>
+    <script>
+        new ChatEngine('user-chat-box', '<%= locals.user.name %>')
+    </script>
+    <% } %>

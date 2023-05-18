@@ -10,7 +10,9 @@ const passport = require('passport')
 const postController = require('../controllers/post_controller');
 
 // 13 post - create the url  // after 23 check checkAuthentication
-router.post('/create',passport.checkAuthentication, postController.create);
+router.post('/create', passport.checkAuthentication, postController.create);
+// comment delete
+router.get('/destroy/:id', passport.checkAuthentication, postController.distroy);
 
 // 14 post -  export the router
 module.exports = router;

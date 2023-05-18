@@ -1,8 +1,17 @@
 <h1>this is a <%= title %>
 </h1>
 
-<form action="/user/create-session" method="post">
+<form action="/users/create-session" method="post">
     <input type="email" name="email" placeholder="email"><br>
     <input type="password" name="password" placeholder="password"><br>
     <input type="submit" value="sing in">
+</form>
+
+<p>
+    <a href="/users/auth/google"> gogole signIn & signUp</a>
+</p>
+
+<form action="/users/forget" method="post">
+    <input type="email" placeholder="enter your email" name="email">
+    <input type="submit" value="forget password">
 </form>

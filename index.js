@@ -8,7 +8,18 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local');
+const passportJwt = require('./config/passport-jwt-strategy');
+const passportGoogle = require('./config/passport-google-oaut2-strategy');
 const MongoStore = require("connect-mongo");
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
+
+// const chatServer = require('http').Server(app);
+// const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+// chatServer.listen(5000);
+// console.log("chat server is listeing on port 5000");
+
+
 //1 require sass 
 // const sassmiddleware = require('node-sass-middleware');
 
@@ -27,6 +38,7 @@ app.use(cookieParser());
 
 app.use(expressLayout)
 app.use(express.static('./assets'));
+app.use('/uploads', express.static(__dirname + '/uploads'))
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
@@ -61,6 +73,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+//flash
+app.use(flash());
+app.use(customMware.setFlash);
+
+// setup the chat server to be used with socket.io
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log('chat server is listening on port 5000');
 
 
 
